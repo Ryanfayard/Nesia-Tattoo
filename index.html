@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nesia Tattoo — Tatouage Polynésien à Nouméa</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #C9A84C; --gold-dark: #8B6914;
+    --black: #0A0A0A; --dark: #111111; --dark2: #1A1A1A; --dark3: #222222;
+    --text: #F0EAD6; --text-muted: #8A7A5A;
+  }
+  body { background: var(--black); color: var(--text); font-family: 'Georgia', serif; font-size: 16px; line-height: 1.7; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.96); border-bottom: 1px solid var(--gold-dark); display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 2rem; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1; }
+  .nav-brand-name { font-family: 'Georgia', serif; font-size: 18px; letter-spacing: 4px; color: var(--gold); }
+  .nav-brand-sub { font-family: 'Arial', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); margin-top: 2px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-family: 'Arial', sans-serif; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hero { min-height: 88vh; background: var(--black); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .hero-pattern { position: absolute; inset: 0; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z' fill='none' stroke='%23C9A84C' stroke-width='1'/%3E%3Cpath d='M30 15 L45 30 L30 45 L15 30 Z' fill='none' stroke='%23C9A84C' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%23C9A84C'/%3E%3C/svg%3E"); }
+  .hero-emblem { margin-bottom: 2rem; }
+  .hero-title-brand { font-family: 'Georgia', serif; font-size: clamp(2.8rem, 7vw, 5rem); color: var(--gold); font-weight: 400; letter-spacing: 8px; text-transform: uppercase; line-height: 1; margin-bottom: 0.3rem; }
+  .hero-title-brand::before, .hero-title-brand::after { content: ''; display: block; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dark), transparent); margin: 0.6rem 0; }
+  .hero-title-sub { font-family: 'Georgia', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--text); font-weight: 400; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 2rem; }
+  .hero-tagline { font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2.5rem; }
+  .btn-gold { display: inline-block; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.9rem 2.5rem; font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .btn-gold:hover { background: var(--gold); color: var(--black); }
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-label { font-family: 'Arial', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; letter-spacing: 1px; color: var(--text); margin-bottom: 1.5rem; }
+  .section-text { font-family: 'Arial', sans-serif; font-size: 15px; color: var(--text-muted); max-width: 600px; line-height: 1.8; }
+  .about-bg { background: var(--dark); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border: 1px solid var(--gold-dark); display: block; }
+  .about-facts { margin-top: 2rem; display: flex; gap: 2rem; }
+  .fact { text-align: center; }
+  .fact-num { font-size: 2rem; color: var(--gold); font-weight: 300; display: block; }
+  .fact-label { font-family: 'Arial', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+  .gallery-bg { background: var(--black); }
+  .filter-bar { display: flex; margin: 2rem 0 1.5rem; border: 1px solid var(--gold-dark); width: fit-content; }
+  .filter-btn { background: transparent; border: none; border-right: 1px solid var(--gold-dark); color: var(--text-muted); padding: 0.65rem 2rem; font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.18s, color 0.18s; }
+  .filter-btn:last-child { border-right: none; }
+  .filter-btn:hover { color: var(--gold); }
+  .filter-btn.active { background: var(--gold); color: var(--black); font-weight: 500; }
+  .cat-tabs { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--dark3); flex-wrap: wrap; }
+  .cat-tab { background: none; border: none; color: var(--text-muted); font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; padding: 0 0 0.75rem; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.18s, border-color 0.18s; }
+  .cat-tab:hover { color: var(--text); }
+  .cat-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .gallery-item { aspect-ratio: 1; background: var(--dark2); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+  .gallery-item:hover { transform: scale(1.02); z-index: 2; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-item .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; transition: opacity 0.2s; }
+  .gallery-item:hover .overlay { opacity: 1; }
+  .item-badge { position: absolute; top: 8px; left: 8px; z-index: 3; font-family: 'Arial', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; background: rgba(10,10,10,0.82); border: 1px solid var(--gold-dark); color: var(--gold); }
+  .gallery-item.hidden { display: none; }
+  .no-results { display: none; font-family: 'Arial', sans-serif; font-size: 14px; color: var(--text-muted); padding: 3rem 0; text-align: center; }
+  .no-results.visible { display: block; }
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; display: none; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 1px solid var(--gold-dark); color: var(--gold); width: 40px; height: 40px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .contact-bg { background: var(--dark); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-family: 'Arial', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; background: var(--dark2); border: 1px solid var(--dark3); color: var(--text); padding: 0.75rem 1rem; font-family: 'Arial', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold-dark); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-icon { width: 40px; height: 40px; border: 1px solid var(--gold-dark); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
+  .contact-item-text strong { display: block; font-family: 'Arial', sans-serif; font-size: 12px; letter-spacing: 1px; color: var(--gold); font-weight: 500; text-transform: uppercase; }
+  .contact-item-text span, .contact-item-text a { font-family: 'Arial', sans-serif; font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .contact-item-text a:hover { color: var(--gold); }
+  footer { background: var(--black); border-top: 1px solid var(--gold-dark); text-align: center; padding: 2rem; }
+  .footer-brand { font-family: 'Georgia', serif; font-size: 22px; letter-spacing: 5px; color: var(--gold); margin-bottom: 0.5rem; }
+  footer p { font-family: 'Arial', sans-serif; font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75rem; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-family: 'Arial', sans-serif; font-size: 12px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  @media (max-width: 640px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0.8rem 1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-name">Nesia Tattoo</span>
+    <span class="nav-brand-sub">Nouméa · Polynésien</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="accueil" class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-emblem">
+    <svg width="160" height="80" viewBox="0 0 160 80" fill="none">
+      <line x1="0" y1="40" x2="55" y2="40" stroke="#8B6914" stroke-width="0.8"/>
+      <line x1="105" y1="40" x2="160" y2="40" stroke="#8B6914" stroke-width="0.8"/>
+      <polygon points="80,10 100,40 80,70 60,40" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
+      <polygon points="80,22 92,40 80,58 68,40" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+      <circle cx="80" cy="40" r="4" fill="#C9A84C"/>
+      <circle cx="80" cy="40" r="8" fill="none" stroke="#8B6914" stroke-width="0.5"/>
+      <line x1="60" y1="40" x2="55" y2="33" stroke="#8B6914" stroke-width="0.5"/>
+      <line x1="60" y1="40" x2="55" y2="47" stroke="#8B6914" stroke-width="0.5"/>
+      <line x1="100" y1="40" x2="105" y2="33" stroke="#8B6914" stroke-width="0.5"/>
+      <line x1="100" y1="40" x2="105" y2="47" stroke="#8B6914" stroke-width="0.5"/>
+      <circle cx="44" cy="40" r="2" fill="none" stroke="#8B6914" stroke-width="0.8"/>
+      <circle cx="116" cy="40" r="2" fill="none" stroke="#8B6914" stroke-width="0.8"/>
+    </svg>
+  </div>
+  <h1 class="hero-title-brand">Nesia</h1>
+  <p class="hero-title-sub">Tattoo</p>
+
+  <!-- ✏️ MODIFIER : Sous-titre sous le logo -->
+  <p class="hero-tagline">Art polynésien · Baie des Citrons, Nouméa</p>
+  <!-- FIN SOUS-TITRE -->
+
+  <a href="#contact" class="btn-gold">Prendre rendez-vous</a>
+</section>
+
+<section id="about" class="about-bg">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <!-- ✏️ MODIFIER : Photo du tatoueur
+           Remplace "tatoueur.jpg" par le nom de ta nouvelle photo
+           La photo doit être dans le dossier "photos/" sur GitHub -->
+      <img class="about-img" src="photos/tatoueur.jpg" alt="Nesia Tattoo — Tatoueur polynésien Nouméa">
+      <!-- FIN PHOTO TATOUEUR -->
+
+      <div>
+        <p class="section-label">À propos</p>
+
+        <!-- ✏️ MODIFIER : Titre de la section À propos -->
+        <h2 class="section-title">Passion, culture<br>&amp; précision</h2>
+        <!-- FIN TITRE -->
+
+        <!-- ✏️ MODIFIER : Premier paragraphe de présentation -->
+        <p class="section-text">Spécialisé dans le tatouage polynésien, chaque œuvre est une composition unique inspirée des traditions maories, tahitiennes et calédoniennes. Chaque motif porte un sens, une histoire, une identité.</p>
+        <!-- FIN PREMIER PARAGRAPHE -->
+
+        <!-- ✏️ MODIFIER : Deuxième paragraphe de présentation -->
+        <p class="section-text" style="margin-top:1rem;">Travail sur mesure exclusivement sur rendez-vous, pour prendre le temps de créer un tatouage qui vous ressemble vraiment.</p>
+        <!-- FIN DEUXIÈME PARAGRAPHE -->
+
+        <div class="about-facts">
+          <!-- ✏️ MODIFIER : Chiffre "Ans d'expérience" (ex: 10+, 15+...) -->
+          <div class="fact"><span class="fact-num">10+</span><span class="fact-label">Ans d'expérience</span></div>
+          <!-- FIN CHIFFRE -->
+
+          <!-- ✏️ MODIFIER : Chiffre "Sur mesure" — ou supprime ce bloc si tu veux -->
+          <div class="fact"><span class="fact-num">100%</span><span class="fact-label">Sur mesure</span></div>
+          <!-- FIN CHIFFRE -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galerie" class="gallery-bg">
+  <div class="section-inner">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Galerie de réalisations</h2>
+    <p class="section-text">Filtrez pour trouver l'inspiration qui vous correspond.</p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="setFilter('tous',this)">Tous</button>
+      <button class="filter-btn" onclick="setFilter('homme',this)">Homme</button>
+      <button class="filter-btn" onclick="setFilter('femme',this)">Femme</button>
+    </div>
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="setCat('toutes',this)">Toutes les zones</button>
+      <button class="cat-tab" onclick="setCat('bras',this)">Bras &amp; épaule</button>
+      <button class="cat-tab" onclick="setCat('dos',this)">Dos &amp; torse</button>
+      <button class="cat-tab" onclick="setCat('main',this)">Main</button>
+    </div>
+
+    <div class="gallery-grid" id="gallery">
+
+      <!-- ========================================================
+           ✏️ AJOUTER UNE PHOTO DANS LA GALERIE
+
+           ÉTAPES :
+           1. Uploade ta photo dans le bon dossier GitHub :
+                photos/homme/bras/   → bras & épaule homme
+                photos/homme/dos/    → dos & torse homme
+                photos/homme/main/   → main homme
+                photos/femme/bras/   → bras & épaule femme
+                photos/femme/dos/    → dos & torse femme
+                photos/femme/main/   → main femme
+
+           2. Copie UN des blocs ci-dessous
+           3. Colle-le juste avant la ligne "FIN GALERIE"
+           4. Change le nom du fichier (photo01.jpg → ton-fichier.jpg)
+           5. Change le badge si besoin (ex: "Homme · Bras")
+
+           BLOC HOMME BRAS :
+           <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+             <div class="item-badge">Homme · Bras</div>
+             <img src="photos/homme/bras/TON-FICHIER.jpg" alt="Tatouage polynésien">
+             <div class="overlay"></div>
+           </div>
+
+           BLOC HOMME DOS :
+           <div class="gallery-item" data-genre="homme" data-zone="dos" onclick="openLightbox(this)">
+             <div class="item-badge">Homme · Dos</div>
+             <img src="photos/homme/dos/TON-FICHIER.jpg" alt="Tatouage polynésien">
+             <div class="overlay"></div>
+           </div>
+
+           BLOC HOMME MAIN :
+           <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
+             <div class="item-badge">Homme · Main</div>
+             <img src="photos/homme/main/TON-FICHIER.jpg" alt="Tatouage polynésien">
+             <div class="overlay"></div>
+           </div>
+
+           BLOC FEMME BRAS :
+           <div class="gallery-item" data-genre="femme" data-zone="bras" onclick="openLightbox(this)">
+             <div class="item-badge">Femme · Bras</div>
+             <img src="photos/femme/bras/TON-FICHIER.jpg" alt="Tatouage polynésien">
+             <div class="overlay"></div>
+           </div>
+           ======================================================== -->
+
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Épaule</div>
+        <img src="photos/homme/bras/photo01.jpg" alt="Tatouage polynésien épaule homme">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Bras complet</div>
+        <img src="photos/homme/bras/photo02.jpg" alt="Tatouage polynésien bras complet">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Avant-bras</div>
+        <img src="photos/homme/bras/photo03.jpg" alt="Tatouage polynésien avant-bras">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Demi-bras</div>
+        <img src="photos/homme/bras/photo04.jpg" alt="Tatouage polynésien demi-bras">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Sleeve complet</div>
+        <img src="photos/homme/bras/photo05.jpg" alt="Tatouage polynésien sleeve complet">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="bras" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Avant-bras</div>
+        <img src="photos/homme/bras/photo06.jpg" alt="Tatouage polynésien avant-bras">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="dos" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Dos / épaule</div>
+        <img src="photos/homme/dos/photo01.jpg" alt="Tatouage polynésien dos épaule">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="dos" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Épaule / torse</div>
+        <img src="photos/homme/dos/photo02.jpg" alt="Tatouage polynésien épaule torse">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Main</div>
+        <img src="photos/homme/main/photo01.jpg" alt="Tatouage polynésien main">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Main raie</div>
+        <img src="photos/homme/main/photo02.jpg" alt="Tatouage raie polynésienne main">
+        <div class="overlay"></div>
+      </div>
+
+      <!-- ✏️ AJOUTE TES NOUVELLES PHOTOS ICI — juste au-dessus de cette ligne -->
+      <!-- FIN GALERIE -->
+
+    </div>
+    <p id="no-results" class="no-results">Aucune photo dans cette catégorie pour l'instant.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact-bg">
+  <div class="section-inner">
+    <p class="section-label">Réservation</p>
+    <h2 class="section-title">Prendre rendez-vous</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="form-group"><label>Prénom et nom</label><input type="text" placeholder="Jean Dupont"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="jean@email.com"></div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+687 00 00 00"></div>
+        <div class="form-group"><label>Zone du tatouage</label>
+          <select><option value="">Choisir...</option><option>Avant-bras</option><option>Épaule</option><option>Dos</option><option>Jambe</option><option>Main</option><option>Autre</option></select>
+        </div>
+        <div class="form-group"><label>Votre projet</label><textarea placeholder="Décrivez votre idée, inspirations, taille souhaitée..."></textarea></div>
+        <button class="btn-gold" style="width:100%;cursor:pointer;">Envoyer ma demande</button>
+      </div>
+      <div class="contact-info">
+
+        <!-- ✏️ MODIFIER : Adresse -->
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-item-text"><strong>Adresse</strong><span>1 Promenade Roger Laroque<br>Baie des Citrons, Nouméa<br>Nouvelle-Calédonie 98800</span></div>
+        </div>
+        <!-- FIN ADRESSE -->
+
+        <!-- ✏️ MODIFIER : Numéro de téléphone (aussi dans href="tel:...") -->
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2.18 2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.18a16 16 0 006.29 6.29l1.54-1.54a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15z"/></svg></div>
+          <div class="contact-item-text"><strong>Téléphone</strong><a href="tel:831597"><span>83.15.97</span></a></div>
+        </div>
+        <!-- FIN TÉLÉPHONE -->
+
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+          <div class="contact-item-text"><strong>Facebook</strong><a href="https://www.facebook.com/profile.php?id=100063583330450" target="_blank"><span>Nesia Tattoo →</span></a></div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
+          <div class="contact-item-text"><strong>Instagram</strong><a href="https://www.instagram.com/nesiatattoo" target="_blank"><span>@NesiaTattoo →</span></a></div>
+        </div>
+
+        <!-- ✏️ MODIFIER : Message délai de réponse -->
+        <div style="padding:1.5rem;border:1px solid var(--gold-dark);background:rgba(201,168,76,0.04);">
+          <p style="font-family:'Arial',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;"><strong style="color:var(--gold);font-weight:500;">Délai de réponse :</strong><br>Je réponds à toutes les demandes sous 48h. Un acompte peut être demandé pour confirmer le rendez-vous.</p>
+        </div>
+        <!-- FIN MESSAGE -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Nesia Tattoo</div>
+  <p>© 2025 · Baie des Citrons, Nouméa · Tatouage polynésien sur mesure</p>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/profile.php?id=100063583330450" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/nesiatattoo" target="_blank">Instagram</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  let currentGenre = 'tous', currentCat = 'toutes';
+  function setFilter(genre, btn) {
+    currentGenre = genre;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active'); applyFilters();
+  }
+  function setCat(cat, btn) {
+    currentCat = cat;
+    document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active'); applyFilters();
+  }
+  function applyFilters() {
+    let visible = 0;
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const ok = (currentGenre === 'tous' || item.dataset.genre === currentGenre) &&
+                 (currentCat === 'toutes' || item.dataset.zone === currentCat);
+      item.classList.toggle('hidden', !ok);
+      if (ok) visible++;
+    });
+    document.getElementById('no-results').classList.toggle('visible', visible === 0);
+  }
+  function openLightbox(el) {
+    document.getElementById('lightbox-img').src = el.querySelector('img').src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+</script>
+</body>
+</html>
