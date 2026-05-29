@@ -1,1 +1,50 @@
+backend:
+  name: git-gateway
+  branch: main
 
+media_folder: photos/homme/bras
+public_folder: photos/homme/bras
+
+collections:
+  - name: "homme_bras"
+    label: "Homme · Bras"
+    folder: "photos/homme/bras"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
+      - {label: "Badge", name: "badge", widget: "string", default: "Homme · Bras"}
+
+  - name: "homme_dos"
+    label: "Homme · Dos"
+    folder: "photos/homme/dos"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
+
+  - name: "homme_jambe"
+    label: "Homme · Jambe"
+    folder: "photos/homme/jambe"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
+
+  - name: "femme_bras"
+    label: "Femme · Bras"
+    folder: "photos/femme/bras"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
+
+  - name: "femme_dos"
+    label: "Femme · Dos"
+    folder: "photos/femme/dos"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
+
+  - name: "femme_jambe"
+    label: "Femme · Jambe"
+    folder: "photos/femme/jambe"
+    create: true
+    fields:
+      - {label: "Photo", name: "image", widget: "image"}
