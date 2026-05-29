@@ -110,23 +110,8 @@
 <section id="accueil" class="hero">
   <div class="hero-pattern"></div>
   <div class="hero-emblem">
-    <svg width="160" height="80" viewBox="0 0 160 80" fill="none">
-      <line x1="0" y1="40" x2="55" y2="40" stroke="#8B6914" stroke-width="0.8"/>
-      <line x1="105" y1="40" x2="160" y2="40" stroke="#8B6914" stroke-width="0.8"/>
-      <polygon points="80,10 100,40 80,70 60,40" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-      <polygon points="80,22 92,40 80,58 68,40" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-      <circle cx="80" cy="40" r="4" fill="#C9A84C"/>
-      <circle cx="80" cy="40" r="8" fill="none" stroke="#8B6914" stroke-width="0.5"/>
-      <line x1="60" y1="40" x2="55" y2="33" stroke="#8B6914" stroke-width="0.5"/>
-      <line x1="60" y1="40" x2="55" y2="47" stroke="#8B6914" stroke-width="0.5"/>
-      <line x1="100" y1="40" x2="105" y2="33" stroke="#8B6914" stroke-width="0.5"/>
-      <line x1="100" y1="40" x2="105" y2="47" stroke="#8B6914" stroke-width="0.5"/>
-      <circle cx="44" cy="40" r="2" fill="none" stroke="#8B6914" stroke-width="0.8"/>
-      <circle cx="116" cy="40" r="2" fill="none" stroke="#8B6914" stroke-width="0.8"/>
-    </svg>
+    <img src="photos/logo.png" alt="Nesia Tattoo" style="width:min(420px,80vw);margin-bottom:0.5rem;">
   </div>
-  <h1 class="hero-title-brand">Nesia</h1>
-  <p class="hero-title-sub">Tattoo</p>
 
   <!-- ✏️ MODIFIER : Sous-titre sous le logo -->
   <p class="hero-tagline">Art polynésien · Baie des Citrons, Nouméa</p>
@@ -189,7 +174,7 @@
       <button class="cat-tab active" onclick="setCat('toutes',this)">Toutes les zones</button>
       <button class="cat-tab" onclick="setCat('bras',this)">Bras &amp; épaule</button>
       <button class="cat-tab" onclick="setCat('dos',this)">Dos &amp; torse</button>
-      <button class="cat-tab" onclick="setCat('main',this)">Main</button>
+      <button class="cat-tab" onclick="setCat('jambe',this)">Jambe</button>
     </div>
 
     <div class="gallery-grid" id="gallery">
@@ -201,10 +186,10 @@
            1. Uploade ta photo dans le bon dossier GitHub :
                 photos/homme/bras/   → bras & épaule homme
                 photos/homme/dos/    → dos & torse homme
-                photos/homme/main/   → main homme
+                photos/homme/jambe/   → main homme
                 photos/femme/bras/   → bras & épaule femme
                 photos/femme/dos/    → dos & torse femme
-                photos/femme/main/   → main femme
+                photos/femme/jambe/   → main femme
 
            2. Copie UN des blocs ci-dessous
            3. Colle-le juste avant la ligne "FIN GALERIE"
@@ -226,9 +211,9 @@
            </div>
 
            BLOC HOMME MAIN :
-           <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
-             <div class="item-badge">Homme · Main</div>
-             <img src="photos/homme/main/TON-FICHIER.jpg" alt="Tatouage polynésien">
+           <div class="gallery-item" data-genre="homme" data-zone="jambe" onclick="openLightbox(this)">
+             <div class="item-badge">Homme · Jambe</div>
+             <img src="photos/homme/jambe/TON-FICHIER.jpg" alt="Tatouage polynésien">
              <div class="overlay"></div>
            </div>
 
@@ -280,14 +265,14 @@
         <img src="photos/homme/dos/photo02.jpg" alt="Tatouage polynésien épaule torse">
         <div class="overlay"></div>
       </div>
-      <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
-        <div class="item-badge">Homme · Main</div>
-        <img src="photos/homme/main/photo01.jpg" alt="Tatouage polynésien main">
+      <div class="gallery-item" data-genre="homme" data-zone="jambe" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Jambe</div>
+        <img src="photos/homme/jambe/photo01.jpg" alt="Tatouage polynésien jambe">
         <div class="overlay"></div>
       </div>
-      <div class="gallery-item" data-genre="homme" data-zone="main" onclick="openLightbox(this)">
-        <div class="item-badge">Homme · Main raie</div>
-        <img src="photos/homme/main/photo02.jpg" alt="Tatouage raie polynésienne main">
+      <div class="gallery-item" data-genre="homme" data-zone="jambe" onclick="openLightbox(this)">
+        <div class="item-badge">Homme · Jambe raie</div>
+        <img src="photos/homme/jambe/photo02.jpg" alt="Tatouage polynésien jambe">
         <div class="overlay"></div>
       </div>
 
@@ -309,7 +294,7 @@
         <div class="form-group"><label>Email</label><input type="email" placeholder="jean@email.com"></div>
         <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+687 00 00 00"></div>
         <div class="form-group"><label>Zone du tatouage</label>
-          <select><option value="">Choisir...</option><option>Avant-bras</option><option>Épaule</option><option>Dos</option><option>Jambe</option><option>Main</option><option>Autre</option></select>
+          <select><option value="">Choisir...</option><option>Avant-bras</option><option>Épaule</option><option>Dos</option><option>Jambe</option><option>Jambe</option><option>Autre</option></select>
         </div>
         <div class="form-group"><label>Votre projet</label><textarea placeholder="Décrivez votre idée, inspirations, taille souhaitée..."></textarea></div>
         <button class="btn-gold" style="width:100%;cursor:pointer;">Envoyer ma demande</button>
